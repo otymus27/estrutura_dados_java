@@ -1,14 +1,15 @@
 package com.otymus.estrutura_dados.vetores;
 
 import java.util.Arrays;
+import java.util.Objects;
 
-public class Vetor {
+public class VetorGenerico {
 
-    private String[] elementos;
+    private Object[] elementos;
     private int tamanho;
 
-    public Vetor(int capacidade) {
-        this.elementos = new String[capacidade];
+    public VetorGenerico(int capacidade) {
+        this.elementos = new Object[capacidade];
         this.tamanho = 0;
     }
 
@@ -16,31 +17,10 @@ public class Vetor {
         return this.tamanho;
     }
 
-//    // Metodo para adicionar elemento no vetor
-//    public void adicionar(String elemento) {
-//        for (int i = 0; i < this.elementos.length; i++) {
-//            if (this.elementos[i] == null) {
-//                this.elementos[i] = elemento;
-//                break;
-//            }
-//        }
-//    }
-
-    // Metodo para adicionar elemento no vetor 2 opção
-//    public void adicionar(String elemento) throws Exception {
-//        if (this.tamanho < this.elementos.length) {
-//            this.elementos[this.tamanho] = elemento;
-//            this.tamanho++;
-//        }else{
-//            throw new Exception("Vetor já está cheio, não é possivel adicionar mais elemento!");
-//        }
-//
-//    }
-
     // Metodo para aumentar capacidado do array
     public void aumentarCapacidade(){
         if(this.tamanho == this.elementos.length){
-            String[] elementosNovos = new String[this.elementos.length*2];
+            Object[] elementosNovos = new Object[this.elementos.length*2];
             for (int i = 0; i < this.elementos.length; i++) {
                 elementosNovos[i] = this.elementos[i];
             }
@@ -49,7 +29,7 @@ public class Vetor {
     }
 
     // Metodo para adicionar elemento no vetor 3 opção, retornando um booleano
-    public boolean adicionar(String elemento){
+    public boolean adicionar(Object elemento){
         this.aumentarCapacidade();
         if (tamanho < elementos.length) {
             elementos[tamanho] = elemento;
@@ -60,7 +40,7 @@ public class Vetor {
     }
 
     // Metodo para adicionar elemento em qualquer posiçao do array
-    public boolean adicionar(int posicao, String elemento){
+    public boolean adicionar(int posicao, Object elemento){
         if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IllegalArgumentException("Posição invalida!");
         }
@@ -90,7 +70,7 @@ public class Vetor {
     }
 
     // Metodo para buscar um elemento do array de uma determina
-    public String buscar(int posicao){
+    public Object buscar(int posicao){
         if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IllegalArgumentException("Posição invalida!");
         }
@@ -98,7 +78,7 @@ public class Vetor {
     }
 
     // Metodo para buscar um elemento do array de uma determina
-    public int verificar(String elemento){
+    public int buscar(Object elemento){
         for (int i = 0; i < tamanho; i++) {
             if (this.elementos[i].equals(elemento)) {
                 return i;
@@ -126,4 +106,15 @@ public class Vetor {
         return s.toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        VetorGenerico that = (VetorGenerico) o;
+        return tamanho == that.tamanho && Objects.deepEquals(elementos, that.elementos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Arrays.hashCode(elementos), tamanho);
+    }
 }

@@ -6,7 +6,7 @@ import com.otymus.estrutura_dados.vetores.Vetor;
 public class Aula_04 {
 
     public static void main(String[] args) {
-        Vetor vetor = new Vetor(5);
+        Vetor vetor = new Vetor(10);
 
         try{
             vetor.adicionar("elemento 1");
@@ -18,5 +18,7 @@ public class Aula_04 {
         }
 
         System.out.println("Tamanho real do vetor: "+vetor.tamanho());
+
+        System.out.println(vetor.toString());
     }
 }
