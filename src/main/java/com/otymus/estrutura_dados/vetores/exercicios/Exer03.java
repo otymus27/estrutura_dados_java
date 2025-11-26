@@ -2,7 +2,6 @@ package com.otymus.estrutura_dados.vetores.exercicios;
 
 import com.otymus.estrutura_dados.vetores.Lista;
 
-import java.util.ArrayList;
 
 // Testando com array com generics
 public class Exer03 {
