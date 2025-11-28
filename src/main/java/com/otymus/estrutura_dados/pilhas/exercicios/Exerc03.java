@@ -38,7 +38,7 @@ public class Exerc03 {
             System.out.println(pilha);
             System.out.println("O tamanho da pilha é: "+pilha.tamanho());
 
-            for(int i = pilha.tamanho(); i >= 0; i--){
+            for(int i = pilha.tamanho(); i > 0; i--){
                 pilha.desempilhar();
             }
 

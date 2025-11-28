@@ -39,7 +39,7 @@ public class Exerc04 {
             System.out.println(stack);
             System.out.println("O tamanho da pilha é: "+stack.size());
 
-            for(int i = stack.size(); i >= 0; i--){
+            for(int i = stack.size(); i > 0; i--){
                 stack.pop();
             }
 
